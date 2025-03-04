@@ -3,20 +3,22 @@ document.addEventListener("DOMContentLoaded", function () {
     const blogPosts = document.getElementById("blogPosts");
     const postList = document.getElementById("postList");
 
-    const storedPosts = JSON.parse(localStorage.getItem("blogPosts")) || [];
+    let storedPosts = JSON.parse(localStorage.getItem("blogPosts")) || [];
 
     if (blogPosts) {
-        storedPosts.forEach(post => addBlogPostToDOM(post.title, post.content, post.date));
+        storedPosts.forEach((post) => addBlogPostToDOM(post.title, post.content, post.date));
     }
 
     if (postList) {
         storedPosts.forEach((post, index) => {
             const postDiv = document.createElement("div");
+            postDiv.classList.add("post-container");
             postDiv.innerHTML = `
                 <h3>Post ${index + 1}</h3>
                 <input type="text" value="${post.title}" class="editTitle">
                 <textarea class="editContent">${post.content}</textarea>
                 <button onclick="saveEdit(${index})">Save</button>
+                <button onclick="deletePost(${index})" class="delete-btn">Delete</button>
             `;
             postList.appendChild(postDiv);
         });
@@ -24,7 +26,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function addBlogPostToDOM(title, content, date) {
         const article = document.createElement("article");
-        article.innerHTML = `<h2>${title}</h2><p class="date">Published on: ${date}</p><p>${content}</p>`;
+        article.classList.add("blog-entry");
+        article.innerHTML = `
+            <h2>${title}</h2>
+            <p class="date">Published on: ${date}</p>
+            <p>${content}</p>
+        `;
         blogPosts.appendChild(article);
     }
 
@@ -53,5 +60,15 @@ function saveEdit(index) {
     storedPosts[index] = { title: updatedTitle, content: updatedContent, date: storedPosts[index].date };
     localStorage.setItem("blogPosts", JSON.stringify(storedPosts));
 
-    alert("Post updated successfully!");
+   
 }
+
+function deletePost(index) {
+    let storedPosts = JSON.parse(localStorage.getItem("blogPosts")) || [];
+    storedPosts.splice(index, 1);
+    localStorage.setItem("blogPosts", JSON.stringify(storedPosts));
+
+    
+    location.reload(); // Refresh the page to reflect changes
+}
+
