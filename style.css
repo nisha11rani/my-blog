@@ -3,11 +3,11 @@ body {
     margin: 0;
     padding: 0;
     background-color: #f4f4f4;
-    color: #333;
+    color: #0a0c0f;
 }
 
 header {
-    background: #333;
+    background: #0fb8ca;
     color: white;
     padding: 20px;
     text-align: center;
@@ -50,7 +50,7 @@ main {
 }
 
 .add-post button {
-    background: #333;
+    background: #06c04d;
     color: white;
     padding: 10px 15px;
     border: none;
@@ -58,7 +58,7 @@ main {
 }
 
 .add-post button:hover {
-    background: #555;
+    background: #6be806;
 }
 
 .blog-posts article {
@@ -67,18 +67,52 @@ main {
 }
 
 .blog-posts h2 {
-    color: #333;
+    color: #0d8caf;
 }
 
 .date {
     color: gray;
     font-size: 14px;
 }
+.delete-btn {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    margin: 5px;
+    cursor: pointer;
+}
+
+.delete-btn:hover {
+    background-color: darkred;
+}
+
+.post-container {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.save-btn {
+    background-color: #28a745; /* Green color */
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    margin: 5px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.save-btn:hover {
+    background-color: #218838; /* Darker green on hover */
+}
 
 footer {
     text-align: center;
     padding: 10px;
-    background: #333;
+    background: #120f0f;
     color: white;
     margin-top: 20px;
 }
+
